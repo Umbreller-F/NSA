@@ -1,0 +1,10 @@
+{"frame_number": 1, "filename": "frame_01.png", "source_frame_index": 0, "timestamp_seconds": 0.0, "timestamp": "00:00:00.000"}
+{"frame_number": 2, "filename": "frame_02.png", "source_frame_index": 17, "timestamp_seconds": 0.566667, "timestamp": "00:00:00.567"}
+{"frame_number": 3, "filename": "frame_03.png", "source_frame_index": 33, "timestamp_seconds": 1.1, "timestamp": "00:00:01.100"}
+{"frame_number": 4, "filename": "frame_04.png", "source_frame_index": 50, "timestamp_seconds": 1.666667, "timestamp": "00:00:01.667"}
+{"frame_number": 5, "filename": "frame_05.png", "source_frame_index": 66, "timestamp_seconds": 2.2, "timestamp": "00:00:02.200"}
+{"frame_number": 6, "filename": "frame_06.png", "source_frame_index": 83, "timestamp_seconds": 2.766667, "timestamp": "00:00:02.767"}
+{"frame_number": 7, "filename": "frame_07.png", "source_frame_index": 99, "timestamp_seconds": 3.3, "timestamp": "00:00:03.300"}
+{"frame_number": 8, "filename": "frame_08.png", "source_frame_index": 116, "timestamp_seconds": 3.866667, "timestamp": "00:00:03.867"}
+{"frame_number": 9, "filename": "frame_09.png", "source_frame_index": 132, "timestamp_seconds": 4.4, "timestamp": "00:00:04.400"}
+{"frame_number": 10, "filename": "frame_10.png", "source_frame_index": 149, "timestamp_seconds": 4.966667, "timestamp": "00:00:04.967"}

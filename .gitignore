@@ -1,0 +1,20 @@
+# Local credentials
+api_key.txt
+.env
+.env.*
+eval/call_gpt.py
+eval/call_gemini.py
+
+# Python caches and local tooling state
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Generated/intermediate result backups
+results/*.bak
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
