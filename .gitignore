@@ -1,5 +1,5 @@
 # Local credentials
-api_key.txt
+api_key*
 .env
 .env.*
 eval/call_gpt.py
@@ -14,13 +14,20 @@ __pycache__/
 
 # Generated/intermediate result backups
 results/*.bak
+results/*-test*.jsonl
+results/.trans_v2_direction_fix_done
 
 # Large generated media kept locally but not versioned
 videos/*
 !videos/.gitkeep
 gpt_frames/*
 !gpt_frames/.gitkeep
+nohup_logs/
+generate/example_*.py
+generate/*_v1.py
 
 # OS/editor noise
 .DS_Store
 Thumbs.db
+
+common_prompts.txt

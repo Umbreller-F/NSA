@@ -32,5 +32,24 @@ python eval/run_gemini_v2.py \
 
 # case viewer
 python visualization/case_viewer.py \
-  --jsonl gemini-3.5-flash-v2-test.jsonl \
+  --jsonl gemini-3.5-flash-v2.jsonl \
   --port 34800
+
+python visualization/case_viewer.py \
+  --jsonl gpt-5.6-sol-v2.jsonl \
+  --port 34801
+
+python visualization/case_viewer.py \
+  --jsonl gpt-5.6-sol-nsa-anchor-error-retry-v2.jsonl \
+  --port 34801
+  
+mkdir -p nohup_logs
+
+nohup python generate/translation_v3.py \
+  > "nohup_logs/$(date +%Y%m%d_%H%M%S)_translation_v3.log" 2>&1 &
+
+nohup python eval/run_gemini_v3.py \
+  > "nohup_logs/$(date +%Y%m%d_%H%M%S)_run_gemini_v3.log" 2>&1 &
+
+nohup python eval/run_gpt_v3.py \
+  > "nohup_logs/$(date +%Y%m%d_%H%M%S)_run_gpt_v3.log" 2>&1 &
