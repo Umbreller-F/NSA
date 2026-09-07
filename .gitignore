@@ -23,6 +23,7 @@ videos/*
 gpt_frames/*
 !gpt_frames/.gitkeep
 textures/v3/NSA_anchor/
+textures/overlap/pairs/
 nohup_logs/
 generate/example_*.py
 generate/*_v1.py

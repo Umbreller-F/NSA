@@ -75,7 +75,7 @@ python visualization/case_viewer.py \
   --port 34801
 ```
 
-## v3：纹理处理与锚点生成（当前进度）
+## v3：纹理处理与锚点生成
 
 ### 1. 纹理预处理
 
@@ -151,3 +151,38 @@ python eval/run_gemini_v3.py --dry-run
 添加 `--test` 时会从 NSA、SA、NSA_ANCHOR 各选择第一个视频，共测试 3 个。正式运行时去掉 `--dry-run`；结果默认保存到 `results/*-v3.jsonl`。
 
 Gemini 上传前会检查视频大小。超过 80 MiB 的视频会临时转码（最长边缩放至 1600 像素，H.264 CRF 23压缩）后上传，原视频不变；可先用 `--dry-run` 查看哪些视频会被转码。
+
+## 图像重叠区域对数据（overlap grounding，当前进度）
+
+### 1. 生成重叠图像对
+
+新增 `generate/overlap_pairs.py`，从 `textures/overlap/original` 的原图生成带重叠区域的图像对。每张原图随机划出两个一样大的区域，重叠面积占比落在 `[0.3, 0.8]`（可调下限）；区域尺寸、位置、偏移方向和重叠比例均随机，整体由固定随机种子（默认 `0`）控制，完全可复现。裁剪图最长边默认缩放到 1024 像素，bbox 同步换算。
+
+默认输出：`textures/overlap/pairs`，按源图划分 train/val（同一张原图的所有对只落在一个 split），JSON 格式与 `generate/grpo_prepare.py` 的 `load_annotation` 一致：
+
+```
+pairs/train/images/pair_00000_a.jpg, pair_00000_b.jpg, pair_00000.json
+pairs/val/...
+```
+
+运行：
+
+```bash
+python generate/overlap_pairs.py
+```
+
+常用调整：
+
+```bash
+python generate/overlap_pairs.py --seed 7 --pairs-per-image 8 --overlap-min 0.4
+```
+
+### 2. 打包为 GRPO 训练 parquet
+
+```bash
+python generate/grpo_prepare.py \
+  --train_dir textures/overlap/pairs/train \
+  --val_dir textures/overlap/pairs/val
+```
+
+输出 `data/image_overlap/train.parquet` 和 `val.parquet`，为 verl 标准格式。
